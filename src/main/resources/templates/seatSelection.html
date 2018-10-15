@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Select seat</title>
+    <link th:replace = "/common/header :: link" />
+    <link rel="stylesheet" th:href="@{/css/seats.css}" />
+
+</head>
+<body>
+<div>
+    <div class="row">
+        <!--<div class="col-lg-9 col-md-9"></div>-->
+        <div class="col-md-3 col-lg-3" style="margin:10px;">
+            <a href="/IntelAirlines/airlines">
+                <button type="button" class="btn btn-primary btn-lg" id="add-new" data-toggle="modal" data-target="#myModal">
+                    Return
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-4" align="center">
+
+        <div class="row" >
+            <div class="col-lg-12">
+                <div class="front">Head</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <div class="seat-space"></div>
+                <div class="seat-space">A</div>
+                <div class="seat-space">B</div>
+                <div class="seat-space">C</div>
+                <div class="seat-space"></div>
+                <div class="seat-space">D</div>
+                <div class="seat-space">E</div>
+                <div class="seat-space">F</div>
+            </div>
+            <div class="col-lg-2"></div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <div class="seat-space">01</div>
+                <div class="first-seat" data-toggle="tooltip" data-placement="top" title="01A"></div>
+                <div class="seat-space" ></div>
+                <div class="first-seat" data-toggle="tooltip" data-placement="top" title="01C"></div>
+                <div class="seat-space"></div>
+                <div class="first-seat" data-toggle="tooltip" data-placement="top" title="01D"></div>
+                <div class="seat-space"></div>
+                <div class="first-seat" data-toggle="tooltip" data-placement="top" title="01F"></div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <div class="seat-space">02</div>
+                <div class="first-seat" data-toggle="tooltip" data-placement="top" title="02A"></div>
+                <div class="seat-space" ></div>
+                <div class="first-seat" data-toggle="tooltip" data-placement="top" title="02C"></div>
+                <div class="seat-space"></div>
+                <div class="first-seat" data-toggle="tooltip" data-placement="top" title="02D"></div>
+                <div class="seat-space"></div>
+                <div class="first-seat" data-toggle="tooltip" data-placement="top" title="02F"></div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="seat-space"></div>
+                <div class="seat-space"></div>
+                <div class="seat-space"></div>
+                <div class="seat-space"></div>
+                <div class="seat-space"></div>
+                <div class="seat-space"></div>
+                <div class="seat-space"></div>
+                <div class="seat-space"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <div class="seat-space">03</div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="03A"></div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="03B"></div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="03C"></div>
+                <div class="seat-space"></div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="03D"></div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="03E"></div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="03F"></div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <div class="seat-space">04</div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="04A"></div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="04B"></div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="04C"></div>
+                <div class="seat-space"></div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="04D"></div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="04E"></div>
+                <div class="eco-seat" data-toggle="tooltip" data-placement="top" title="04F"></div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="front">Tail</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="first-seat" style="margin-right: 10px;"></div>
+                <span>First class</span>
+            </div>
+            <div class="col-lg-4" >
+                <div class="eco-seat" style="margin-right: 10px;"></div>
+                <span>Economy</span>
+            </div>
+            <div class="col-lg-4">
+                <div class="occupied" style="margin-right: 10px;"></div>
+                <span>Occupied</span>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-6">
+                Seat Number:
+                <b><span id="seat_num_selected"></span></b>
+                <br>
+                Price($): <b><span id="price_accord"></span></b>
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+
+            <div class="col-lg-10">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">First Name:</span>
+                    </div>
+                    <input type="text" class="form-control"  id="input-first-name">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Last Name:</span>
+                    </div>
+                    <input type="text" class="form-control"  id="input-last-name">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Age:</span>
+                    </div>
+                    <input type="text" class="form-control"  id="input-age">
+                </div>
+
+                <input type="hidden" id="input-price-first" th:value="${priceFirst}">
+                <input type="hidden" id="input-price-eco" th:value="${priceEco}">
+                <input type="hidden" id="input-airline-num" th:value="${airlineNum}">
+                <input type="hidden" id="input-occupied" th:value="${occupied}">
+                <input type="hidden" id="input-plane-model" th:value="${planeModel}">
+                <input type="hidden" id="input-seat-type">
+
+            </div>
+
+
+
+        </div>
+
+        <button type="button" class="btn btn-primary" id="btn-submit">Submit</button>
+
+    </div>
+
+</div>
+
+
+
+
+
+</body>
+<script th:replace="/common/footer :: script" />
+<script src="/IntelAirlines/js/seatSelect.js"></script>
+
+</html>

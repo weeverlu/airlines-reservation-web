@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Airlines Management</title>
+    <link th:replace = "/common/header :: link" />
+</head>
+<body>
+
+
+<!-- Button: add new airline -->
+<div class="clearfix" style="margin-bottom: 10px;" > </div>
+<div>
+    <div class="row">
+        <div class="col-lg-9 col-md-9"></div>
+        <div class="col-md-3 col-lg-3" align="center">
+            <button type="button" class="btn btn-primary btn-lg" id="add-new" data-toggle="modal" data-target="#myModal">
+                Add new Airline
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- list -->
+<div class="clearfix" style="margin-bottom: 10px; margin-top:10px;"></div>
+<div class="row" style="padding-left: 20px; padding-right: 20px;">
+    <div class="col-lg-12 col-md-12">
+
+        <table class="table">
+            <thead class="thead-light" align="center">
+            <tr>
+                <th>ID</th>
+                <th>Flight #</th>
+                <th>Model</th>
+                <th>1st #</th>
+                <th>1st $</th>
+                <th>Economy #</th>
+                <th>Economy $</th>
+                <th>Depart. port</th>
+                <th>Arrival port</th>
+                <th>Depart. time</th>
+                <th>Arrival time</th>
+                <th>Operation</th>
+            </tr>
+            </thead>
+
+            <tbody align="center">
+            <tr th:each="airnode : ${airlineList}">
+                <td th:text="${airnode.id}"></td>
+                <td th:text="${airnode.airlineNum}"></td>
+                <td th:text="${airnode.planeModel}"></td>
+                <td th:text="${airnode.numFirstclass}"></td>
+                <td th:text="${airnode.priceFirstclass}">$500</td>
+                <td th:text="${airnode.numEconomy}">250</td>
+                <td th:text="${airnode.priceEconomy}">$300</td>
+                <td th:text="${airnode.departurePort}">LAX</td>
+                <td th:text="${airnode.arrivalPort}">BJA</td>
+                <td th:text="${airnode.departureTime}">2018-9-9</td>
+                <td th:text="${airnode.arrivalTime}">2018-10-10</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm btn-edit" data-toggle="modal" data-target="#myModal" th:attr="data-id=${airnode.id},data-flight_num=${airnode.airlineNum},data-model=${airnode.planeModel},data-num_1st=${airnode.numFirstclass},data-pri_1st=${airnode.priceFirstclass},data-num_eco=${airnode.numEconomy},data-pri_eco=${airnode.priceEconomy},data-dep_port=${airnode.departurePort},data-arr_port=${airnode.arrivalPort},data-dep_time=${airnode.departureTime},data-arr_time=${airnode.arrivalTime}">
+                    Edit
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm btn-delete" data-toggle="modal" data-target="#deleteModal" th:attr="data-id=${airnode.id}, data-flight=${airnode.airlineNum}" >Delete</button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+<!-- modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- modal head -->
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- modal body -->
+            <div class="modal-body" align="center">
+                <form>
+                    <input type="hidden" id="submit_type">
+                    <input type="hidden" id="edit_id">
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+
+                        <div class="col-lg-10">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Flight Number:</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="eg. AA1101" id="input-flight-num">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Model:</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="eg. A380" id="input-model">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Number of 1st class seats:</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="eg. 100" id="input-num-first">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Price of 1st class seats:</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="eg. ($) 99" id="input-price-first">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Number of economy seats:</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="eg. 200" id="input-num-eco">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Price of economy seats:</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="eg. ($) 49" id="input-price-eco">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Departure Airport</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="eg. LAX" id="input-dep-port">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Arrival Airport</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="eg. NYC" id="input-arr-port">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Departure Time</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="eg. 2018-10-10 10:00(PST)" id="input-dep-time">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Arrival Time</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="eg. 2018-10-10 12:00(EST)" id="input-arr-time">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-1"></div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn-submit">Submit</button>
+                <button type="button" class="btn btn-outline-secondary btn-close-modal" data-dismiss="modal">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- modal -->
+<div class="modal fade" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- modal head -->
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- modal body -->
+            <div class="modal-body" align="center">
+                <input type="hidden" id="delete-id" value="">
+                <h5>Delete Flight <span id="delete-info" style="color: blue;"></span> ?</h5>
+            </div>
+
+            <!-- modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="submit-delete">Delete</button>
+                <button type="button" class="btn btn-outline-secondary btn-close-modal" data-dismiss="modal">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script th:replace="/common/footer :: script" />
+<script src="/IntelAirlines/js/airlinesManage.js"></script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:replace = "/common/header :: link" />
+</head>
+<body>
+<div class="row" style="margin-top: 50px;">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10" align="center">
+        <a href="/IntelAirlines/airlinesManage" class="btn btn-primary btn-lg" role="button">Administer: Manage airlines!</a>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+<div class="row" style="margin-top: 50px;">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10" align="center">
+        <a href="/IntelAirlines/airlines" class="btn btn-primary btn-lg" role="button">Customer: Get tickets!</a>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+<div class="row" style="margin-top: 50px;">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10" align="center">
+        <a href="/IntelAirlines/h2console" class="btn btn-primary btn-lg" role="button">Check SQL database!</a>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+
+<div class="row" style="margin-top: 50px;">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10" align="right">
+        By Weever Lu
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+<div class="row" style="margin-top: 10px;">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10" align="right">
+        <a href="https://github.com/weeverlu" class="btn btn-outline-primary btn-lg" role="button">GitHub</a>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+
+</body>
+<script th:replace="/common/footer :: script" />
+</html>

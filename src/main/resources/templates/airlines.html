@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Airlines Board</title>
+    <link th:replace = "/common/header :: link" />
+</head>
+<body>
+
+<!-- list -->
+<div class="clearfix" style="margin-bottom: 10px; margin-top:10px;"></div>
+<div class="row" style="padding-left: 20px; padding-right: 20px;">
+    <div class="col-lg-12 col-md-12">
+
+        <table class="table">
+            <thead class="thead-dark" align="center">
+            <tr>
+                <th>Flight #</th>
+                <th>Model</th>
+                <th>1st seats Left</th>
+                <th>1st $</th>
+                <th>Economy seats Left</th>
+                <th>Economy $</th>
+                <th>Depart. port</th>
+                <th>Arrival port</th>
+                <th>Depart. time</th>
+                <th>Arrival time</th>
+                <th>Operation</th>
+            </tr>
+            </thead>
+
+            <tbody align="center">
+            <tr th:each="airnode : ${flightList}">
+                <td th:text="${airnode.airlineNum}"></td>
+                <td th:text="${airnode.planeModel}"></td>
+                <td th:text="${airnode.firstclassLeft}"></td>
+                <td th:text="${airnode.priceFirstclass}">$500</td>
+                <td th:text="${airnode.economyLeft}">250</td>
+                <td th:text="${airnode.priceEconomy}">$300</td>
+                <td th:text="${airnode.departurePort}">LAX</td>
+                <td th:text="${airnode.arrivalPort}">BJA</td>
+                <td th:text="${airnode.departureTime}">2018-9-9</td>
+                <td th:text="${airnode.arrivalTime}">2018-10-10</td>
+                <td>
+                    <a th:href="@{'/seat?airlineNum='+${airnode.airlineNum}}">
+                        <button type="button" class="btn btn-primary btn-sm btn-select" data-toggle="modal" data-target="#myModal" th:attr="data-id=${airnode.id},data-flight_num=${airnode.airlineNum},data-model=${airnode.planeModel},data-1st_left=${airnode.firstclassLeft},data-pri_1st=${airnode.priceFirstclass},data-eco_left=${airnode.economyLeft},data-pri_eco=${airnode.priceEconomy},data-dep_port=${airnode.departurePort},data-arr_port=${airnode.arrivalPort},data-dep_time=${airnode.departureTime},data-arr_time=${airnode.arrivalTime}">
+                        Select Seat
+                        </button>
+                    </a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+<script th:replace="/common/footer :: script" />
+</html>
