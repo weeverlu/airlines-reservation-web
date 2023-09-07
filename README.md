@@ -7,7 +7,7 @@ It is a web application that simulates purchasing airline flights as a customer,
 Using Spring Boot, Hibernate, Tomcat, h2(MySQL).
 
 ## Demo
-This is the demo website running on GCP: [demo](http://35.245.100.59/IntelAirlines/)
+This is the demo website running on GCP: ~~[demo](http://35.245.100.59/IntelAirlines/)~~ (Sorry this project has been deprecated and the demo link is expired)
 
 ## How to use
 ### deploy it to GCP
